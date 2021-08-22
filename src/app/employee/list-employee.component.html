@@ -1,0 +1,32 @@
+<div class="card mx-3" style="width: 40rem;">
+    <div class="card-header">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Emp-ID</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <a [routerLink]="['/employees', employee.Id]">
+                        <td>{{employee.Id}}</td>
+                    </a>
+                    
+                    <td>{{employee.Name}}</td>
+                    <td>{{employee.Salary}}</td>
+                </tr>
+                <tr *ngIf="employees && employees.length === 0">
+                    <td colspan="3">No employees to display</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="!employees" class="card-footer">
+        <h6>{{statusMessage}}</h6>
+    </div>
+</div>
